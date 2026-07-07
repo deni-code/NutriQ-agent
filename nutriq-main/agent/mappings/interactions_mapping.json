@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "_meta": {
+      "description": "NutriQ interactions with ratings and reviews."
+    },
+    "properties": {
+      "user_id": {"type": "integer"},
+      "recipe_id": {"type": "integer"},
+      "date": {"type": "date"},
+      "rating": {"type": "integer"},
+      "review": {"type": "text"}
+    }
+  }
+}

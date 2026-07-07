@@ -1,0 +1,16 @@
+{
+  "id": "nutriq.filter_by_dietary_tags",
+  "type": "esql",
+  "description": "Filter recipes by dietary tag, nutrition, and time.",
+  "tags": ["nutriq", "recipes", "nutrition", "dietary"],
+  "configuration": {
+    "query": "FROM nutriq-recipes\n| WHERE (?tag IS NULL OR MATCH(tags, ?tag))\n| WHERE (?max_calories IS NULL OR nutrition_calories <= ?max_calories)\n| WHERE (?min_protein IS NULL OR nutrition_protein_pdv >= ?min_protein)\n| WHERE (?max_carbs IS NULL OR nutrition_carbohydrates_pdv <= ?max_carbs)\n| WHERE (?max_minutes IS NULL OR minutes <= ?max_minutes)\n| SORT nutrition_protein_pdv DESC, minutes ASC\n| LIMIT 10",
+    "params": {
+      "tag": {"type": "string", "description": "Dietary tag (e.g., vegan, gluten-free)"},
+      "max_calories": {"type": "float", "description": "Maximum calories"},
+      "min_protein": {"type": "float", "description": "Minimum protein (pdv)"},
+      "max_carbs": {"type": "float", "description": "Maximum carbs (pdv)"},
+      "max_minutes": {"type": "integer", "description": "Maximum total minutes"}
+    }
+  }
+}

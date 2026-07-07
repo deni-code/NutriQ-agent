@@ -1,0 +1,29 @@
+{
+  "mappings": {
+    "_meta": {
+      "description": "NutriQ recipes with ingredients, nutrition, and cooking times. Nutrition fields are percent daily value (pdv) from the dataset." 
+    },
+    "properties": {
+      "recipe_id": {"type": "integer"},
+      "name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+      "minutes": {"type": "integer"},
+      "contributor_id": {"type": "integer"},
+      "submitted": {"type": "date"},
+      "tags": {"type": "keyword"},
+      "nutrition": {"type": "float"},
+      "nutrition_calories": {"type": "float"},
+      "nutrition_total_fat_pdv": {"type": "float"},
+      "nutrition_sugar_pdv": {"type": "float"},
+      "nutrition_sodium_pdv": {"type": "float"},
+      "nutrition_protein_pdv": {"type": "float"},
+      "nutrition_saturated_fat_pdv": {"type": "float"},
+      "nutrition_carbohydrates_pdv": {"type": "float"},
+      "n_steps": {"type": "integer"},
+      "steps": {"type": "text"},
+      "description": {"type": "text"},
+      "ingredients": {"type": "keyword"},
+      "ingredients_text": {"type": "text"},
+      "n_ingredients": {"type": "integer"}
+    }
+  }
+}

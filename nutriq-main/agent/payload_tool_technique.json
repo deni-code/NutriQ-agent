@@ -1,0 +1,13 @@
+{
+  "id": "nutriq.search_by_technique",
+  "type": "esql",
+  "description": "Search recipes by cooking technique in steps and description.",
+  "tags": ["nutriq", "recipes", "technique"],
+  "configuration": {
+    "query": "FROM nutriq-recipes\n| WHERE (?technique IS NULL OR MATCH(steps, ?technique) OR MATCH(description, ?technique))\n| WHERE (?max_minutes IS NULL OR minutes <= ?max_minutes)\n| SORT minutes ASC\n| LIMIT 10",
+    "params": {
+      "technique": {"type": "string", "description": "Technique keyword (e.g., sauté, braise)"},
+      "max_minutes": {"type": "integer", "description": "Maximum total minutes"}
+    }
+  }
+}

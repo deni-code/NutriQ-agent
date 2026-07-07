@@ -1,0 +1,13 @@
+{
+  "id": "nutriq.rank_by_popularity",
+  "type": "esql",
+  "description": "Return most popular recipes by rating count and average rating.",
+  "tags": ["nutriq", "recipes", "popularity"],
+  "configuration": {
+    "query": "FROM nutriq-recipe-popularity\n| WHERE (?min_ratings IS NULL OR rating_count >= ?min_ratings)\n| WHERE (?min_avg IS NULL OR rating_avg >= ?min_avg)\n| SORT rating_count DESC, rating_avg DESC\n| LIMIT 10",
+    "params": {
+      "min_ratings": {"type": "integer", "description": "Minimum rating count"},
+      "min_avg": {"type": "float", "description": "Minimum average rating"}
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "_meta": {
+      "description": "NutriQ recipe popularity aggregates by recipe_id."
+    },
+    "properties": {
+      "recipe_id": {"type": "integer"},
+      "rating_count": {"type": "integer"},
+      "rating_avg": {"type": "float"},
+      "last_review_date": {"type": "date"}
+    }
+  }
+}
